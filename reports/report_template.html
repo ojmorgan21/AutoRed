@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AutoRed Vulnerability Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #2b547e; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; }
+        th { background-color: #2b547e; color: white; }
+        tr:nth-child(even){background-color: #f2f2f2;}
+        .Critical { background-color: #ff4c4c; color: white; }
+        .High { background-color: #ff944c; color: white; }
+        .Medium { background-color: #ffd24c; color: black; }
+        .Low { background-color: #aaff4c; color: black; }
+    </style>
+</head>
+<body>
+    <h1>AutoRed Vulnerability Report</h1>
+    <h2>Target: {{ target }}</h2>
+
+    <h3>Vulnerability Summary</h3>
+    <ul>
+        {% for sev, count in summary.items() %}
+        <li><strong>{{ sev }}:</strong> {{ count }} issues</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Detailed Findings</h3>
+    <table>
+        <tr>
+            <th>Port</th>
+            <th>Service</th>
+            <th>Vulnerability</th>
+            <th>Severity</th>
+        </tr>
+        {% for item in vuln_report %}
+        <tr class="{{ item.severity }}">
+            <td>{{ item.port }}</td>
+            <td>{{ item.service }}</td>
+            <td>{{ item.vuln }}</td>
+            <td>{{ item.severity }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

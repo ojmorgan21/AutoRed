@@ -1,0 +1,5 @@
+venv/
+__pycache__/
+*.pyc
+reports/scan_report.html
+reports/scan_report.txt
